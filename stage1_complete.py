@@ -18,7 +18,7 @@ try:
     from api_scraper import SimpleAPICollector  
     from data_validator import SimpleDataChecker
 except ImportError:
-    print("❌ Error: Make sure all files are in the same directory!")
+    print("Error: Make sure all files are in the same directory!")
     print("Required files: job_scraper.py, api_scraper.py, data_validator.py")
     exit(1)
 
@@ -46,13 +46,13 @@ def step1_web_scraping():
     scraped_jobs = scraper.scrape_indeed(max_pages=2)
     
     if scraped_jobs:
-        print(f"✅ Web scraping completed! Found {len(scraped_jobs)} jobs")
+        print(f"Web scraping completed! Found {len(scraped_jobs)} jobs")
         
         # Save scraped jobs
         scraper.save_to_csv("scraped_jobs.csv")
         return scraped_jobs
     else:
-        print("⚠️ No jobs found from web scraping")
+        print("No jobs found from web scraping")
         return []
 
 def step2_api_collection():
@@ -76,13 +76,13 @@ def step2_api_collection():
     api_jobs = collector.collect_all_jobs(rapidapi_key)
     
     if api_jobs:
-        print(f"✅ API collection completed! Found {len(api_jobs)} jobs")
+        print(f"API collection completed! Found {len(api_jobs)} jobs")
         
         # Save API jobs
         collector.save_data()
         return api_jobs
     else:
-        print("⚠️ No jobs found from APIs")
+        print("No jobs found from APIs")
         return []
 
 def step3_combine_data(scraped_jobs, api_jobs):
@@ -97,7 +97,7 @@ def step3_combine_data(scraped_jobs, api_jobs):
     all_jobs = scraped_jobs + api_jobs
     
     if not all_jobs:
-        print("❌ No jobs to combine!")
+        print("No jobs to combine!")
         return []
     
     print(f"Total jobs before removing duplicates: {len(all_jobs)}")
@@ -134,13 +134,13 @@ def step3_combine_data(scraped_jobs, api_jobs):
         with open(json_filename, 'w') as f:
             json.dump(unique_jobs, f, indent=2)
         
-        print(f"✅ Combined data saved to:")
+        print(f"Combined data saved to:")
         print(f"  - {csv_filename}")
         print(f"  - {json_filename}")
         
         return unique_jobs, csv_filename
     else:
-        print("❌ No unique jobs to save!")
+        print("No unique jobs to save!")
         return [], None
 
 def step4_quality_check(data_filename):
@@ -150,7 +150,7 @@ def step4_quality_check(data_filename):
     print_header("STEP 4: QUALITY CHECK")
     
     if not data_filename:
-        print("❌ No data file to check!")
+        print("No data file to check!")
         return
     
     print(f"Checking quality of {data_filename}...")
@@ -163,7 +163,7 @@ def step4_quality_check(data_filename):
         checker.generate_simple_report()
         return True
     else:
-        print("❌ Could not check data quality")
+        print("Could not check data quality")
         return False
 
 def step5_summary(scraped_count, api_count, final_count):
@@ -172,20 +172,20 @@ def step5_summary(scraped_count, api_count, final_count):
     """
     print_header("STAGE 1 COMPLETE!")
     
-    print("📊 FINAL RESULTS:")
+    print("FINAL RESULTS:")
     print(f"  Web scraped jobs: {scraped_count}")
     print(f"  API collected jobs: {api_count}")
     print(f"  Total collected: {scraped_count + api_count}")
     print(f"  Final unique jobs: {final_count}")
     
     if final_count >= 20:
-        print("\n🎉 SUCCESS! You have plenty of job data for Stage 2!")
+        print("\nSUCCESS! You have plenty of job data for Stage 2!")
     elif final_count >= 10:
-        print("\n✅ Good! You have enough data to proceed to Stage 2.")
+        print("\nGood! You have enough data to proceed to Stage 2.")
     else:
-        print("\n⚠️ You might want to collect more data before Stage 2.")
+        print("\n might want to collect more data before Stage 2.")
     
-    print(f"\n📁 FILES CREATED:")
+    print(f"\nFILES CREATED:")
     print(f"  - scraped_jobs.csv (web scraped data)")
     print(f"  - api_jobs_*.csv (API collected data)")
     print(f"  - final_jobs_*.csv (combined & cleaned data)")
@@ -244,9 +244,9 @@ def main():
         step5_summary(len(scraped_jobs), len(api_jobs), len(final_jobs))
         
     except KeyboardInterrupt:
-        print("\n\n⏹️ Stopped by user")
+        print("\n\nStopped by user")
     except Exception as e:
-        print(f"\n❌ Error occurred: {e}")
+        print(f"\nError occurred: {e}")
         print("Check that all required files are in the same directory")
     
     print(f"\n{'='*60}")
