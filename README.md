@@ -25,7 +25,7 @@ This project collects job postings from websites and APIs, then checks the quali
    python data_validator.py   # Check data quality
    ```
 
-## 📁 Files in This Project
+## Files in This Project
 
 - **job_scraper.py** - Scrapes jobs from Indeed
 - **api_scraper.py** - Gets jobs from free APIs (USAJobs, RemoteOK)
