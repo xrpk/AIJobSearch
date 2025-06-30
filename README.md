@@ -45,7 +45,7 @@ Install packages with:
 pip install -r requirements.txt
 ```
 
-## What You'll Get
+## files produced
 
 After running the scripts, you'll have:
 
@@ -79,15 +79,18 @@ Edit `config.py` to change:
 - Some websites block scraping
 - Try the API collector instead: `python api_scraper.py`
 
-## Quality Goals
 
+## Stage 2: Data Preprocessing
+- clean job descriptions
+- remove duplicates
+- prepare for embeddings
+- clean resume text
 
-## next
+### Usage
+```bash
+python data_preprocessor.py
+```
 
-After Stage 1:
-- **Stage 2:** Clean and preprocess the job descriptions
-- **Stage 3:** Generate embeddings for jobs and your resume  
-- **Stage 4:** Find the best job matches using similarity
 
 ## help things
 
