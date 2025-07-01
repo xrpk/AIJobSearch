@@ -1,0 +1,41 @@
+
+John Doe
+Computer Science Student
+Email: john.doe@siue.edu
+
+EDUCATION
+Bachelor of Science in Computer Science
+Southern Illinois University - Edwardsville
+Expected Graduation: May 2025
+GPA: 3.5/4.0
+
+SKILLS
+Programming Languages: Python, Java, JavaScript, C++
+Web Technologies: HTML, CSS, React, Node.js
+Databases: MySQL, PostgreSQL, MongoDB
+Tools: Git, Docker, AWS, Linux
+
+EXPERIENCE
+Software Development Intern
+Tech Inc. - Summer 2024
+- Developed web applications using React and Node.js
+- Collaborated with team of 5 developers on agile projects
+
+Teaching Assistant - Computer Science
+University of Missouri - St. Louis - Fall 2023 to Present
+- Assist students with programming assignments in Python and Java
+- Grade assignments and provide feedback
+- Hold office hours for student questions
+
+PROJECTS
+Job Matching System
+- Building a system to match resumes with job postings using embeddings
+- Using Python, local LLM models, and machine learning techniques
+
+Personal Portfolio Website
+- Created responsive website showcasing projects
+- Technologies: HTML, CSS, JavaScript, deployed on AWS
+
+CERTIFICATIONS
+AWS Cloud Practitioner
+Python Programming Certificate
