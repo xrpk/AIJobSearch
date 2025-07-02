@@ -1,115 +1,186 @@
-# Job Matching System - Stage 1: Data Collection
+# Job Matching System
 
 A simple project to collect job postings using web scraping and APIs.
 
-## What This Does
+## Overview
 
-This project collects job postings from websites and APIs, then checks the quality of the data.
+This project collects job postings from websites, then checks the quality of the data using LLMs.
+
+### Key Features
+- **Multi-source data collection** (web scraping)
+- **AI-powered matching** using LLMs
+- **Automated preprocessing** and quality validation
+- **Similarity scoring** with cosine similarity
+- **Top job recommendations** with detailed analysis
+
+
+### Stage 1: Data Acquisition
+- **Web Scraping**: Collects jobs from Indeed using BeautifulSoup
+- **API Collection**: Fetches jobs from USAJobs, RemoteOK, and RapidAPI
+- **Data Validation**: Quality checks and duplicate removal
+- **Output**: CSV/JSON files with job postings
+
+### Stage 2: Data Preprocessing
+- **Text Cleaning**: Removes HTML, normalize formatting
+- **Resume Processing**: Extract and clean resume content
+- **Data Standardization**: Consistent field formatting
+- **Output**: Preprocessed job data and resume ready for embedding
+
+### Stage 3: Embedding Generation
+- **LLM Integration**: Local language models for text analysis
+- **Vector Creation**: Convert text to numerical representations using transformers
+- **Local Processing**: No API key necessary, runs entirely offline
+- **Output**: Embedded vectors for jobs and resume
+
+### Stage 4: Similarity Matching
+- **Cosine Similarity**: Calculate job-resume similarity scores
+- **Ranking Algorithm**: Sort jobs by relevance
+- **Top 10 Selection**: Identify best matches
+- **Output**: Ranked list of top job recommendations
+
+### Stage 5: Analysis & Reporting
+- **Results Analysis**: Evaluate matching quality
+- **Performance Metrics**: Similarity score distributions
+- **Recommendations**: Improvement suggestions
+- **Output**: Comprehensive project report
+
 
 ## Quick Start
 
-1. **Setup your environment:**
+### Prerequisites
+- Python 3.8 or newer
+- Internet connection (for data collection only)
+- GPU recommended for faster LLM process
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/xrpk/AIJobSearch
+   cd job-matching-system
+   ```
+
+2. **Set up environment**
    ```bash
    python setup.py
    ```
 
-2. **Run the complete pipeline:**
+3. **Install required software**
    ```bash
-   python stage1_complete.py
+   pip install -r requirements.txt
    ```
 
-3. **Or run individual parts:**
-   ```bash
-   python job_scraper.py      # Web scraping only
-   python api_scraper.py      # API collection only
-   python data_validator.py   # Check data quality
-   ```
+### Basic Usage
 
-## Files in This Project
-
-- **job_scraper.py** - Scrapes jobs from Indeed
-- **api_scraper.py** - Gets jobs from free APIs (USAJobs, RemoteOK)
-- **data_validator.py** - Checks if your data is good quality
-- **stage1_complete.py** - Runs everything together
-- **config.py** - Settings you can change
-- **setup.py** - Sets up your computer for the project
-
-## What You Need
-
-- Python 3.8 or newer
-- Internet connection
-- The Python packages in requirements.txt
-
-Install packages with:
+#### Run Complete Pipeline
 ```bash
-pip install -r requirements.txt
+python main_pipeline.py
 ```
+- This will run through each stage in its entirety
 
-## files produced
-
-After running the scripts, you'll have:
-
-- **scraped_jobs.csv** - Jobs from web scraping
-- **api_jobs_*.csv** - Jobs from APIs
-- **final_jobs_*.csv** - All jobs combined and cleaned
-- A quality report showing how good your data is
-
-
-## Changing Settings
-
-Edit `config.py` to change:
-- Search location (default: St. Louis, MO)
-- Keywords (default: computer science, software developer)
-- How many pages to scrape
-- Wait times between requests
-
-## Troubleshooting
-
-**"No jobs found"**
-- Check your internet connection
-- Try different keywords in config.py
-- Some websites change their structure
-
-**"Import errors"**
-- Run `python setup.py` first
-- Make sure all files are in the same folder
-- Install requirements: `pip install -r requirements.txt`
-
-**"Permission denied" or similar**
-- Some websites block scraping
-- Try the API collector instead: `python api_scraper.py`
-
-
-## Stage 2: Data Preprocessing
-- clean job descriptions
-- remove duplicates
-- prepare for embeddings
-- clean resume text
-
-### Usage
+#### Alternate Option Run Individual Stages
 ```bash
-python data_preprocessor.py
+# Stage 1: Data Collection
+python stage1_complete.py
+
+# Stage 2: Preprocessing (after Stage 1)
+python stage2_preprocessing.py
+
+# Stage 3: Generate Embeddings (after Stage 2)
+python stage3_embeddings.py
+
+# Stage 4: Find Matches (after Stage 3)
+python stage4_matching.py
 ```
+- This splits the pipeline into each section, allowing you to test specific areas of the pipeline.
 
 
-## help things
+## Configuration
 
-1. Check the error messages - they usually tell you what's wrong
-2. Make sure all .py files are in the same folder
-3. Try running `python setup.py` again
-4. Look at the examples in each file
-
-## Example Usage
+You can edit `config.py` to customize the job search:
 
 ```python
-# Simple example of using the scraper
-from job_scraper import SimpleJobScraper
+# Search parameters
+LOCATION = "St. Louis, MO"
+KEYWORDS = "software developer computer science python"
 
-scraper = SimpleJobScraper(
-    location="Your City, State",
-    keywords="your keywords here"
-)
+# Data collection limits
+MAX_PAGES_TO_SCRAPE = 3
+MAX_API_JOBS = 50
 
-jobs = scraper.scrape_indeed(max_pages=2)
-scraper.save_to_csv("my_jobs.csv")
+# Embedding settings
+EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"  # Local model
+DEVICE = "cuda"  # or "cpu"
+BATCH_SIZE = 32
+
+# Matching parameters
+TOP_N_JOBS = 10
+MIN_SIMILARITY_SCORE = 0.7
 ```
+## Model Setup
+
+### Local LLM Models
+This project uses local transformer models for embeddings:
+- **No API costs**: Free to run. No unnecessary costs
+- **Offline capability**: Works without internet after the first download
+
+#### Models available to use when ran:
+1. **sentence-transformers/all-MiniLM-L6-v2**: Fast and efficient
+2. **sentence-transformers/all-mpnet-base-v2**: Higher quality but way slower
+
+#### Setup:
+```bash
+pip install sentence-transformers torch
+```
+
+The models will automatically download the first time it is ran (roughly ~70-100MB for MiniLM).
+
+## Data Sources
+
+### Web Scraping
+- **Indeed**: Primary job board scraping
+
+### APIs
+- **USAJobs**: Government positions (free and no key required)
+- **RemoteOK**: Remote opportunities (free no key required)
+
+## Results Analysis
+
+### Matching Performance
+The system evaluates matches based on:
+- **Similarity scores**: Cosine similarity between resume and job embeddings
+- **Keywords**: Common skills and coding languages
+- **Location**: location preferences
+- **Experience**: Career level matching
+
+### Expected Results
+- **High similarity (0.4+)**: Best matches with most overlaps
+- **Medium similarity (0.1-0.4)**: Decent match, some learning curve
+- **Low similarity (<0.1)**: Potential career Pivots, or large experience gap.
+
+## Potential Future Improvements
+
+### Enhanced Features
+- **Model fine-tuning**: Adapt embeddings to specific job domains
+- **Multiple model utilization**: Combine different embedding models
+- **Advanced Search**: Advanced query understanding
+- **Skill ID**: Automatally fnid skills from job descriptions
+
+
+### Data Sources
+- **LinkedIn integration**: Professional network data
+- **Company websites**: Direct career page scraping
+- **Industry-specific boards(RemoteOK etc.)**: Specialized job platforms
+
+
+## References
+
+### Documentation
+- [Sentence Transformers Documentation](https://www.sbert.net/)
+- [PyTorch Documentation](https://pytorch.org/docs/stable/index.html)
+- [BeautifulSoup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+- [Pandas User Guide](https://pandas.pydata.org/docs/user_guide/)
+
+
+
+
