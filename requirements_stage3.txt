@@ -1,3 +1,4 @@
+# DONT NEED ANYMORE USE requirements.txt
 # LLM Requirements for Stage 3: Embedding Generation
 # Install with: pip install -r requirements_stage3_llm.txt
 
@@ -14,7 +15,3 @@ numpy>=1.21.0
 
 #faster maybe? 
 # transformers>=4.20.0
-
-# Note - no API keys needed
-# Everything runs locally using LLM models
-# First run will download models (~25-75MB) but then works offline

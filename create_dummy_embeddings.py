@@ -16,7 +16,7 @@ def create_dummy_embeddings():
     Create dummy embeddings for testing the job matcher
     """
     print("=== Creating Dummy Embeddings for Testing ===")
-    print("WARNING: These are fake embeddings for testing only!")
+    print("WARNING: These are fake embeddings")
     
     # Look for job data file
     job_data_files = []
@@ -148,12 +148,7 @@ def main():
     
     if success:
         print(f"\n{'='*50}")
-        print("NEXT STEPS:")
-        print("1. Run: python job_matcher.py")
-        print("2. See if the job matching code works")
-        print("3. Implement real embeddings in Stage 3")
-        print("4. Replace dummy embeddings with real ones")
-        print(f"{'='*50}")
+
 
 if __name__ == "__main__":
     main()

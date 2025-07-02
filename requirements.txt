@@ -1,4 +1,4 @@
-# Simple Requirements for Job Matching System - Stage 1
+# Requirements for Job Matching stage 1
 # Install with: pip install -r requirements.txt
 
 # Basic web scraping
@@ -9,9 +9,4 @@ lxml>=4.6.0
 # Data handling
 pandas>=1.3.0
 
-# Optional: For more advanced scraping (if needed)
-# selenium>=4.0.0
 
-# Note: You might also want to install these for visualization later:
-# matplotlib>=3.3.0
-# seaborn>=0.11.0

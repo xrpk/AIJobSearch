@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Test Script for Local LLM Embeddings
-Quick test to make sure setup works before running the full embedding process
+tests local embeds before doing the full process and breaking things
 
 """
 

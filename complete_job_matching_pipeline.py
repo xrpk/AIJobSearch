@@ -486,7 +486,6 @@ class CompleteJobMatchingPipeline:
         
         PROJECTS:
         - Job matching system with AI embeddings
-        - Web application with database integration
         - Data analysis and visualization tools
         """
 
@@ -540,7 +539,7 @@ def main():
     success = pipeline.run_complete_pipeline(resume_path=resume_path, top_n=top_n)
     
     if success:
-        print("\nPipeline completed successfully!")
+        print("\nPipeline completed successfully")
         print("Check the generated CSV files for detailed results.")
     else:
         print("\nPipeline completed with issues.")

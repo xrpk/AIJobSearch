@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 """
 Ryan Krell
-Job Scraper 
-Stage 1: Basic web scraping with BeautifulSoup
+Job Scraper for indeed and RemoteOK 
 
-A straightforward job scraper that collects job postings from Indeed
-with basic error handling and ethical considerations.
+it reads robots.txt to make sure it can take stuff
 """
 
 import requests

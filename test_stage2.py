@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """
-Simple test for Stage 2 preprocessing
-Creates fake job data and tests the cleaning
+tests stage 2 
 
-Author: CS Student
+makes fake jobs so that it can clean and check them
 """
 
 import pandas as pd

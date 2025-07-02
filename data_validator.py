@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 Data Quality Checker
-Stage 1:
+Stage 1
 
-This script checks the job data we collected to make sure it's complete
+This script checks the job data collected to make sure it's complete
 and ready for the next stage
 """
 
@@ -18,7 +18,7 @@ class SimpleDataChecker:
         
     def load_data(self, filename):
         """
-        Load our job data from CSV or JSON file
+        Load job data from CSV or JSON file
         """
         try:
             if filename.endswith('.csv'):

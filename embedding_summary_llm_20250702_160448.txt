@@ -1,8 +1,0 @@
-LLM Embedding Generation Summary
-Generated: 2025-07-02 16:04:48
-Model used: all-MiniLM-L6-v2
-Total job embeddings: 10
-Resume embedded: Yes
-Embedding dimension: 384
-Cost: $0.00 (Local LLM!)
-Model runs locally - no internet required after download

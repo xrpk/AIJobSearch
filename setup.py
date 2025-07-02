@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 """
 Simple Setup Script
-Get your computer ready for the job matching project
 
-This script helps you install the stuff you need and 
-makes sure everything works.
-
+just installs stuff so that it works
 """
 
 import subprocess

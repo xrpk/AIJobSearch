@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Simple API Job Collector
-Stage 1: Collecting jobs using APIs instead of web scraping
+Stage 1: Collecting jobs using api instead of web scraping
 """
 
 import requests

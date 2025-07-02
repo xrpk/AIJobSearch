@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-Complete Stage 1: Run Everything Together
-Simple pipeline that runs web scraping, API collection, and data validation
+Complete Stage 1
 
-This script runs all the Stage 1 components together to collect
+pipeline that runs web scraping, API collection, and data validation
+
+this script runs all the Stage 1 components together to collect
 job data and check its quality.
 """
 

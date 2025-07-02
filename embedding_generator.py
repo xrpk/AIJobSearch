@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
 Stage 3: LLM Embedding Generator
-Convert job postings and resume into vector embeddings using local LLM models
+converts job postings and resume into vector embeddings using local LLM models
 
 Use if you dont want to pay for an API key (which I did)
 
-This script uses sentence-transformers to generate embeddings locally on your computer.
+this uses sentence-transformers to generate embeddings locally on your computer.
 No API keys needed
 
 """
@@ -333,7 +333,7 @@ def main():
         return
     
     # Choose embedding model
-    print("\nAvailable LLM models:")
+    print("\nLLM models:")
     models = {
         "1": ("all-MiniLM-L6-v2", "Fast, good quality, 384 dimensions"),
         "2": ("all-mpnet-base-v2", "Higher quality, slower, 768 dimensions"),

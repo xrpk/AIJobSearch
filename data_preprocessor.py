@@ -1,13 +1,7 @@
 #!/usr/bin/env python3
 """
-Stage 2: Data Preprocessing
-Job Matching System - Clean up the job data from Stage 1
-
-This script takes the messy job data we collected and cleans it up
-so we can use it for embeddings in Stage 3.
-
-Author: CS Student
-Date: 2025
+Stage 2: Data Preprocessing 
+cleans up the stuff from stage 1
 """
 
 import pandas as pd

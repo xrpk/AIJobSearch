@@ -3,8 +3,6 @@
 just for testing 
 
 change test_file 
-
-
 """
 
 import os
@@ -169,7 +167,7 @@ def test_real_data():
                 print(" No jobs in file")
                 return True
         else:
-            print(f"" Couldn't load {test_file}")
+            print(f" Couldn't load {test_file}")
             return False
             
     except Exception as e:
@@ -235,12 +233,6 @@ def main():
     
     if passed == total:
         print("\ ALL TESTS PASSED!")
-        print("Stage 2 is ready to merge to main branch")
-        print("\nNext steps:")
-        print("1. git add .")
-        print("2. git commit -m 'Stage 2 ready for merge'")
-        print("3. git push origin feature/stage2-preprocessing")
-        print("4. Create pull request or merge to main")
     else:
         print(f"\ {total - passed} TESTS FAILED")
         print("Fix the issues before merging to main")

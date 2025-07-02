@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Job Matcher - Stage 4: Similarity Calculation and Top Job Selection
+Job Matcher - Stage 4
 
 This script takes embeddings from job postings and a resume, then finds
 the most similar jobs using cosine similarity.
