@@ -38,13 +38,6 @@ This project collects job postings from websites, then checks the quality of the
 - **Top 10 Selection**: Identify best matches
 - **Output**: Ranked list of top job recommendations
 
-### Stage 5: Analysis & Reporting
-- **Results Analysis**: Evaluate matching quality
-- **Performance Metrics**: Similarity score distributions
-- **Recommendations**: Improvement suggestions
-- **Output**: Comprehensive project report
-
-
 ## Quick Start
 
 ### Prerequisites
