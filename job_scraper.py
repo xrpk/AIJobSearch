@@ -73,7 +73,7 @@ class SimpleJobScraper:
                 job_cards = soup.find_all('div', class_='job_seen_beacon')
                 
                 if not job_cards:
-                    print("No job cards found - website structure might have changed")
+                    print("No job cards found - fix")
                     break
                 
                 # Extract info from each job card
@@ -117,7 +117,7 @@ class SimpleJobScraper:
                         print(f"Error parsing job card: {e}")
                         continue
                 
-                # Be nice to the website - wait between requests
+                # wait between requests
                 wait_time = random.uniform(2, 4)  # Wait 2-4 seconds
                 print(f"Waiting {wait_time:.1f} seconds before next page...")
                 time.sleep(wait_time)

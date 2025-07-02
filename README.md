@@ -50,7 +50,7 @@ This project collects job postings from websites, then checks the quality of the
 1. **Clone the repository**
    ```bash
    git clone https://github.com/xrpk/AIJobSearch
-   cd job-matching-system
+   cd jobProject
    ```
 
 2. **Set up environment**
@@ -67,7 +67,7 @@ This project collects job postings from websites, then checks the quality of the
 
 #### Run Complete Pipeline
 ```bash
-python main_pipeline.py
+python complete_job_matching_pipeline.py
 ```
 - This will run through each stage in its entirety
 
@@ -77,13 +77,14 @@ python main_pipeline.py
 python stage1_complete.py
 
 # Stage 2: Preprocessing (after Stage 1)
-python stage2_preprocessing.py
+python run_all_tests.py
 
 # Stage 3: Generate Embeddings (after Stage 2)
-python stage3_embeddings.py
+python embedding_generator.py
 
 # Stage 4: Find Matches (after Stage 3)
-python stage4_matching.py
+python create_dummy_embeddings.py
+python job_matcher.py
 ```
 - This splits the pipeline into each section, allowing you to test specific areas of the pipeline.
 
@@ -98,8 +99,8 @@ LOCATION = "St. Louis, MO"
 KEYWORDS = "software developer computer science python"
 
 # Data collection limits
-MAX_PAGES_TO_SCRAPE = 3
-MAX_API_JOBS = 50
+MAX_PAGES_TO_SCRAPE = 2
+MAX_API_JOBS = 10
 
 # Embedding settings
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"  # Local model

@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 """
-Simple Configuration File
-Settings for our job matching system
-
-Just basic settings that we can easily change without 
-modifying the main code files.
+config file so you dont need to change every single file
 """
 
 # Basic search settings
@@ -20,7 +16,7 @@ OTHER_LOCATIONS = [
 ]
 
 # How many pages to scrape from each site
-MAX_PAGES_TO_SCRAPE = 5
+MAX_PAGES_TO_SCRAPE = 10
 
 # How long to wait between requests
 WAIT_TIME_MIN = 2  # minimum seconds
