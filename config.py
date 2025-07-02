@@ -20,13 +20,13 @@ OTHER_LOCATIONS = [
 ]
 
 # How many pages to scrape from each site
-MAX_PAGES_TO_SCRAPE = 2
+MAX_PAGES_TO_SCRAPE = 5
 
-# How long to wait between requests (be nice to websites!)
+# How long to wait between requests
 WAIT_TIME_MIN = 2  # minimum seconds
 WAIT_TIME_MAX = 4  # maximum seconds
 
-# Required fields that every job posting should have
+# Required fields that every job posting should habe or it wont work
 REQUIRED_FIELDS = [
     'title',
     'company', 
@@ -36,7 +36,7 @@ REQUIRED_FIELDS = [
     'source'
 ]
 
-# File names for saving data
+# File names for saved data
 OUTPUT_FILES = {
     'scraped_csv': 'scraped_jobs.csv',
     'api_csv': 'api_jobs.csv',
@@ -44,9 +44,9 @@ OUTPUT_FILES = {
     'final_json': 'final_jobs.json'
 }
 
-# API settings (add your API keys here if you have them)
+# API settings (add a key here if you want, program runs without one)
 API_KEYS = {
-    'rapidapi_key': None,  # Get free key at rapidapi.com
+    'rapidapi_key': None, 
     'adzuna_app_id': None,
     'adzuna_app_key': None
 }
@@ -67,14 +67,14 @@ GOOD_KEYWORDS = [
     'frontend'
 ]
 
-# Keywords to avoid (if we want to filter out certain jobs)
+# Keywords to avoid (can add to this list, but these 3 are pretty big dealbreakers usually)
 AVOID_KEYWORDS = [
     'unpaid',
     'volunteer',
-    'sales'  # Remove this if you want sales jobs
+    'sales' 
 ]
 
-# Quality thresholds
+# Quality thresholds (make sure you don't get weird fake job postings with no info)
 QUALITY_SETTINGS = {
     'min_description_length': 50,  # Minimum characters in job description
     'min_jobs_needed': 10,  # Minimum number of jobs we want to collect
@@ -95,7 +95,8 @@ if __name__ == "__main__":
     print(f"Wait time: {WAIT_TIME_MIN}-{WAIT_TIME_MAX} seconds")
     print(f"Target jobs: {QUALITY_SETTINGS['good_jobs_target']}")
     
-    if any(API_KEYS.values()):
-        print("✅ API keys configured")
-    else:
-        print("⚠️ No API keys configured (using free APIs only)")
+    ## only need if you add API keys
+    ##if any(API_KEYS.values()):
+    ##    print("API keys configured")
+    ##else:
+    ##    print("No API keys configured (using free APIs)")

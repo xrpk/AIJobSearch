@@ -190,22 +190,12 @@ def step5_summary(scraped_count, api_count, final_count):
     print(f"  - api_jobs_*.csv (API collected data)")
     print(f"  - final_jobs_*.csv (combined & cleaned data)")
     print(f"  - final_jobs_*.json (same data in JSON format)")
-    
-    print(f"\n🚀 NEXT STEPS:")
-    print(f"  1. Review the quality report above")
-    print(f"  2. If quality looks good, proceed to Stage 2 (Data Preprocessing)")
-    print(f"  3. Stage 2 will clean the text and prepare it for embeddings")
-    
-    print(f"\n💡 TIPS FOR STAGE 2:")
-    print(f"  - Use the final_jobs_*.csv file as input")
-    print(f"  - You'll also need to prepare your resume text")
-    print(f"  - Stage 2 will clean job descriptions and extract key information")
 
 def main():
     """
     Main function that runs the complete Stage 1 pipeline
     """
-    print("🎯 JOB MATCHING SYSTEM - STAGE 1: DATA ACQUISITION")
+    print("JOB MATCHING SYSTEM - STAGE 1: DATA ACQUISITION")
     print("This will collect job data using web scraping and APIs")
     
     # Ask user if they want to proceed

@@ -26,21 +26,21 @@ class SimpleDataChecker:
         try:
             if filename.endswith('.csv'):
                 self.data = pd.read_csv(filename)
-                print(f"✅ Loaded {len(self.data)} jobs from {filename}")
+                print(f"* Loaded {len(self.data)} jobs from {filename}")
             elif filename.endswith('.json'):
                 with open(filename, 'r') as f:
                     jobs_list = json.load(f)
                 self.data = pd.DataFrame(jobs_list)
-                print(f"✅ Loaded {len(self.data)} jobs from {filename}")
+                print(f"* Loaded {len(self.data)} jobs from {filename}")
             else:
-                print("❌ File must be .csv or .json")
+                print("X File must be .csv or .json")
                 return False
             
             self.total_jobs = len(self.data)
             return True
             
         except Exception as e:
-            print(f"❌ Error loading file: {e}")
+            print(f"X Error loading file: {e}")
             return False
     
     def check_required_fields(self):
@@ -57,10 +57,10 @@ class SimpleDataChecker:
                 missing_fields.append(field)
         
         if missing_fields:
-            print(f"❌ Missing required fields: {missing_fields}")
+            print(f"X Missing required fields: {missing_fields}")
             return False
         else:
-            print("✅ All required fields are present")
+            print("* All required fields are present")
             return True
     
     def check_data_completeness(self):
@@ -83,9 +83,9 @@ class SimpleDataChecker:
                 print(f"{field}: {completeness:.1f}% complete ({self.total_jobs - empty_count}/{self.total_jobs})")
                 
                 if completeness < 80:
-                    print(f"  ⚠️ Warning: {field} has low completeness")
+                    print(f"  WARNING: Warning: {field} has low completeness")
                 else:
-                    print(f"  ✅ {field} looks good")
+                    print(f"  * {field} looks good")
     
     def check_for_duplicates(self):
         """
@@ -99,7 +99,7 @@ class SimpleDataChecker:
             duplicate_count = duplicates.sum()
             
             if duplicate_count > 0:
-                print(f"⚠️ Found {duplicate_count} potential duplicate jobs")
+                print(f"WARNING: Found {duplicate_count} potential duplicate jobs")
                 
                 # Show some examples
                 duplicate_jobs = self.data[duplicates][['title', 'company']].head(5)
@@ -107,9 +107,9 @@ class SimpleDataChecker:
                 for _, job in duplicate_jobs.iterrows():
                     print(f"  - {job['title']} at {job['company']}")
             else:
-                print("✅ No exact duplicates found")
+                print("* No exact duplicates found")
         else:
-            print("❌ Can't check duplicates - missing title or company fields")
+            print("X Can't check duplicates - missing title or company fields")
     
     def check_job_sources(self):
         """
@@ -124,7 +124,7 @@ class SimpleDataChecker:
                 percentage = (count / self.total_jobs) * 100
                 print(f"{source}: {count} jobs ({percentage:.1f}%)")
         else:
-            print("❌ No source information available")
+            print("X No source information available")
     
     def check_locations(self):
         """
@@ -142,7 +142,7 @@ class SimpleDataChecker:
                     percentage = (count / self.total_jobs) * 100
                     print(f"  {location}: {count} jobs ({percentage:.1f}%)")
         else:
-            print("❌ No location information available")
+            print("X No location information available")
     
     def check_description_quality(self):
         """
@@ -191,7 +191,7 @@ class SimpleDataChecker:
         print(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print(f"{'='*60}")
         
-        print(f"📊 SUMMARY:")
+        print(f" SUMMARY:")
         print(f"Total jobs collected: {self.total_jobs}")
         
         # Run all checks
@@ -212,7 +212,7 @@ class SimpleDataChecker:
             print("WARNING: Very few jobs collected. Try expanding your search.")
         
         if self.total_jobs > 0:
-            print(f"\n💡 NEXT STEPS:")
+            print(f"\n NEXT STEPS:")
             print(f"1. If quality looks good, proceed to Stage 2 (Data Preprocessing)")
             print(f"2. If you want more jobs, run the scraper again with different keywords")
             print(f"3. Save this data - you'll use it for the embedding stage!")

@@ -144,7 +144,7 @@ class LLMEmbeddingGenerator:
         """
         Generate embedding for student's resume using local LLM!
         """
-        print("🔄 Generating LLM embedding for resume...")
+        print("Generating LLM embedding for resume...")
         
         # Clean up resume text a bit
         if len(resume_text) > 2000:  # Reasonable length
@@ -155,7 +155,7 @@ class LLMEmbeddingGenerator:
             embedding = self.model.encode([resume_text])
             self.resume_embedding = embedding[0].tolist()  # Convert to list for JSON
             
-            print(" Resume embedding generated successfully!")
+            print(" Resume embedding generated successfully")
             return True
             
         except Exception as e:
@@ -257,7 +257,7 @@ def create_sample_resume():
     Create a sample resume for testing
     """
     sample_resume = """
-John Doe
+Ryan Testresume
 Computer Science Student
 Email: john.doe@siue.edu
 
@@ -328,7 +328,7 @@ def main():
     
     # Check if required library is installed
     if not check_model_availability():
-        print("\nFirst, install the required library:")
+        print("\ninstall the required library:")
         print("pip install sentence-transformers")
         return
     
@@ -337,7 +337,7 @@ def main():
     models = {
         "1": ("all-MiniLM-L6-v2", "Fast, good quality, 384 dimensions"),
         "2": ("all-mpnet-base-v2", "Higher quality, slower, 768 dimensions"),
-        "3": ("paraphrase-multilingual-MiniLM-L12-v2", "Multilingual support")
+        "3": ("paraphrase-multilingual-MiniLM-L12-v2", "Multilingual support (don't use)")
     }
     
     for key, (name, desc) in models.items():
@@ -348,7 +348,7 @@ def main():
     if choice in models:
         model_name = models[choice][0]
     else:
-        model_name = "all-MiniLM-L6-v2"  # Default
+        model_name = "all-MiniLM-L6-v2"  # Default LLM because its the fastest
     
     print(f"Using model: {model_name}")
     
@@ -413,7 +413,7 @@ def main():
     # Generate embeddings for all jobs
     print(f"\n{'='*50}")
     print("Starting LLM embedding generation...")
-    print("This runs entirely on your computer!")
+    print(" ")
     print(f"{'='*50}")
     
     proceed = input("Proceed? (y/n): ").strip().lower()
@@ -423,25 +423,22 @@ def main():
     
     # Embed all jobs
     if embedder.embed_all_jobs():
-        # Save everything
+        # Save everything to CSV/JSON files
         embedder.save_embeddings()
         
         # Show sample results
         embedder.show_sample_embeddings()
         
-        print(f"\nStage 3 Complete - Local LLM Success!")
+        print(f"\nStage 3 Complete")
         print(f"Generated embeddings for {len(embedder.embeddings)} jobs")
         print(f"Generated embedding for resume")
         print(f"All embeddings saved to files")
-        print(f"Total cost: $0.00")
+        print(f"Total cost: $0.00") ## show that it is free because no API keys
         
         print(f"\nFiles created:")
         print(f"  - job_embeddings_llm_*.json (job embeddings)")
         print(f"  - resume_embedding_llm_*.json (your resume embedding)")
         print(f"  - embedding_summary_llm_*.txt (summary info)")
-        
-        print(f"\nNext: Stage 4 - Similarity Calculation")
-        print(f"Use the generated embedding files to find the most similar jobs!")
         
     else:
         print("Failed to generate embeddings")

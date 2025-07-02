@@ -147,7 +147,7 @@ def main():
     """
     print("=== Local LLM Embeddings Test ===")
     print("This will test your setup for local LLM embedding generation")
-    print("🎉 No API keys needed, no costs, everything runs locally!")
+    print("No API keys needed, no costs, everything runs locally!")
     
     # Check installations
     if not test_installation():
@@ -160,7 +160,7 @@ def main():
     # Load model
     model = test_model_loading()
     if not model:
-        print("\nLLM model loading failed. Check internet connection for first download.")
+        print("\nLLM model loading failed.")
         return
     
     # Test 4: Generate embeddings

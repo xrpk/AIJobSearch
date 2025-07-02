@@ -25,10 +25,10 @@ def check_python():
     print(f"Your Python version: {version.major}.{version.minor}.{version.micro}")
     
     if version.major >= 3 and version.minor >= 8:
-        print("✅ Python version is good!")
+        print("* Python version is good!")
         return True
     else:
-        print("❌ You need Python 3.8 or newer")
+        print("X You need Python 3.8 or newer")
         print("Download from: https://python.org")
         return False
 
@@ -52,9 +52,9 @@ def install_packages():
             subprocess.check_call([
                 sys.executable, "-m", "pip", "install", package
             ], stdout=subprocess.DEVNULL)
-            print(f"✅ {package} installed")
+            print(f"* {package} installed")
         except:
-            print(f"❌ Failed to install {package}")
+            print(f"X Failed to install {package}")
             failed.append(package)
     
     if failed:
@@ -63,7 +63,7 @@ def install_packages():
         print(f"pip install {' '.join(failed)}")
         return False
     
-    print("✅ All packages installed!")
+    print("* All packages installed!")
     return True
 
 def test_imports():
@@ -81,9 +81,9 @@ def test_imports():
     for name, import_name in packages_to_test:
         try:
             __import__(import_name)
-            print(f"✅ {name} works")
+            print(f"* {name} works")
         except ImportError:
-            print(f"❌ {name} not working")
+            print(f"X {name} not working")
             all_good = False
     
     return all_good
@@ -97,9 +97,9 @@ def create_folders():
     for folder in folders:
         try:
             os.makedirs(folder, exist_ok=True)
-            print(f"✅ Created {folder}/ folder")
+            print(f"* Created {folder}/ folder")
         except:
-            print(f"⚠️ Could not create {folder}/ folder")
+            print(f"WARNING: Could not create {folder}/ folder")
 
 def create_gitignore():
     """Create .gitignore so we don't accidentally commit data files"""
@@ -128,9 +128,9 @@ __pycache__/
     try:
         with open('.gitignore', 'w') as f:
             f.write(gitignore_content.strip())
-        print("✅ Created .gitignore")
+        print("* Created .gitignore")
     except:
-        print("⚠️ Could not create .gitignore")
+        print("WARNING: Could not create .gitignore")
 
 def test_basic_scraping():
     """Test if basic web scraping works"""
@@ -145,14 +145,14 @@ def test_basic_scraping():
         soup = BeautifulSoup(response.content, 'html.parser')
         
         if soup.find('h1'):
-            print("✅ Basic web scraping works!")
+            print("* Basic web scraping works!")
             return True
         else:
-            print("⚠️ Web scraping might have issues")
+            print("WARNING: Web scraping might have issues")
             return False
             
     except Exception as e:
-        print(f"❌ Web scraping test failed: {e}")
+        print(f"X Web scraping test failed: {e}")
         return False
 
 def main():
@@ -206,18 +206,18 @@ def main():
     print(f"Completed: {success_count}/{total_steps} steps")
     
     if success_count == total_steps:
-        print("🎉 Setup complete! You're ready to go!")
+        print(" Setup complete! You're ready to go!")
         print("\nNext steps:")
         print("1. Run: python job_scraper.py")
         print("2. Or run: python stage1_complete.py")
     elif success_count >= 4:
-        print("✅ Setup mostly successful!")
+        print("* Setup mostly successful!")
         print("You should be able to run the project")
     else:
-        print("❌ Setup had issues")
+        print("X Setup had issues")
         print("Try fixing the errors above before proceeding")
     
-    print(f"\n📁 Project files you should have:")
+    print(f?"\n Project files you should have:")
     files_needed = [
         'job_scraper.py',
         'api_scraper.py', 
@@ -228,9 +228,9 @@ def main():
     
     for file in files_needed:
         if os.path.exists(file):
-            print(f"✅ {file}")
+            print(f"* {file}")
         else:
-            print(f"❌ {file} (missing)")
+            print(f"X {file} (missing)")
 
 if __name__ == "__main__":
     main()

@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 """
-Complete Job Matching System - All Stages Integrated
+Complete Job Matching System - all stages
 Runs the complete pipeline using existing modules from the GitHub repository
-
-Author: Ryan Krell
-Date: 2025
 """
 
 import os
@@ -473,7 +470,7 @@ class CompleteJobMatchingPipeline:
         
         EDUCATION:
         Bachelor of Science in Computer Science
-        University of Missouri - St. Louis
+        Saint Louis University - St. Louis
         
         EXPERIENCE:
         Software Developer (2022-2025)
