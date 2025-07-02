@@ -42,7 +42,7 @@ def step1_web_scraping():
         keywords="computer science software developer"
     )
     
-    # Scrape jobs (just 2 pages to keep it reasonable)
+    # Scrape jobs (just 2 pages for showing off the test)
     scraped_jobs = scraper.scrape_indeed(max_pages=2)
     
     if scraped_jobs:
@@ -69,8 +69,8 @@ def step2_api_collection():
         keywords="software developer computer science"
     )
     
-    # Add your RapidAPI key here if you have one
-    rapidapi_key = None  # Replace with "your_api_key_here" if you have one
+    # Add RapidAPI key here if needed
+    rapidapi_key = None  # dont need one
     
     # Collect from APIs
     api_jobs = collector.collect_all_jobs(rapidapi_key)
@@ -200,8 +200,8 @@ def main():
     
     # Ask user if they want to proceed
     print("\nThis will:")
-    print("1. Scrape jobs from Indeed (2 pages)")
-    print("2. Collect jobs from free APIs") 
+    print("1. Scrape jobs from Indeed ")
+    print("2. Collect jobs") 
     print("3. Combine and remove duplicates")
     print("4. Check data quality")
     

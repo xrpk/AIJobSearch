@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 """
-Simple Data Quality Checker
-Stage 1: Check if our collected job data is good quality
+Data Quality Checker
+Stage 1:
 
 This script checks the job data we collected to make sure it's complete
-and ready for the next stage of our project.
-
-Author: CS Student
-Date: 2025
+and ready for the next stage
 """
 
 import pandas as pd
@@ -205,17 +202,12 @@ class SimpleDataChecker:
         # Simple overall assessment
         print(f"\n{'='*60}")
         if self.total_jobs >= 20:
-            print("GOOD: You have a decent amount of job data!")
+            print("GOOD: You have a decent amount of job data")
         elif self.total_jobs >= 10:
             print("OK: You have some job data, but more would be better.")
         else:
             print("WARNING: Very few jobs collected. Try expanding your search.")
         
-        if self.total_jobs > 0:
-            print(f"\n NEXT STEPS:")
-            print(f"1. If quality looks good, proceed to Stage 2 (Data Preprocessing)")
-            print(f"2. If you want more jobs, run the scraper again with different keywords")
-            print(f"3. Save this data - you'll use it for the embedding stage!")
         
         print(f"{'='*60}")
 
